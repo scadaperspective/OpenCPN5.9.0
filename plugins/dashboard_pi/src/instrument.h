@@ -54,8 +54,11 @@ extern wxFont *g_pFontTitle;
 extern wxFont *g_pFontData;
 extern wxFont *g_pFontLabel;
 extern wxFont *g_pFontSmall;
+// extern
 
-wxString toSDMM(int NEflag, double a);
+wxString toSDMM(int NEflag, double a, bool hi_precision = true);
+
+//wxString toSDMM(int NEflag, double a);
 
 class DashboardInstrument;
 class DashboardInstrument_Single;

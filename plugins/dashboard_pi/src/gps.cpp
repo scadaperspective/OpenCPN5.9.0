@@ -339,7 +339,7 @@ void DashboardInstrument_GPS::DrawForeground(wxGCDC* dc) {
 
   for (int idx = 0; idx < 12; idx++) {
     if (m_SatInfo[idx].SignalToNoiseRatio) {
-      int h = m_SatInfo[idx].SignalToNoiseRatio * m_refDim / 50 ;  // 24 0.4;
+      int h = m_SatInfo[idx].SignalToNoiseRatio * m_refDim / 36 ;  // 24 0.4;
       dc->DrawRectangle(idx * pitch + offset,
                         m_scaleBase + (4 * m_scaleDelta) - h, pitch * 60 / 100, h);
     }

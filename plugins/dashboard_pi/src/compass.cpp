@@ -1,13 +1,13 @@
-/******************************************************************************
+/***************************************************************************
  * $Id: compass.cpp, v1.0 2010/08/05 SethDart Exp $
  *
- * Project:  OpenCPN
- * Purpose:  Dashboard Plugin
- * Author:   Jean-Eudes Onfray
- *           (Inspired by original work from Andreas Heiming)
+ * Project: OpenCPN
+ * Purpose: Dashboard Plugin
+ * Author: Jean-Eudes Onfray(Inspired by original work from Andreas Heiming)
+ *
  *
  ***************************************************************************
- *   Copyright (C) 2010 by David S. Register   *
+ *   Copyright (C) 2010-2023 by David S. Register                          *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -22,7 +22,7 @@
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
  *   Free Software Foundation, Inc.,                                       *
- *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,  USA.             *
+ *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,  USA.         *
  ***************************************************************************
  */
 
@@ -41,18 +41,14 @@
 #include <wx/wx.h>
 #endif
 
-DashboardInstrument_Compass::DashboardInstrument_Compass(wxWindow* parent,
-                                                         wxWindowID id,
-                                                         wxString title,
-                                                         DASH_CAP cap_flag)
-    : DashboardInstrument_Dial(parent, id, title, cap_flag, 0, 360, 0, 360) {
+DashboardInstrument_Compass::DashboardInstrument_Compass(wxWindow* parent, wxWindowID id, wxString title, DASH_CAP cap_flag)
+                            : DashboardInstrument_Dial(parent, id, title, cap_flag, 0, 360, 0, 360) {
   SetOptionMarker(5, DIAL_MARKER_SIMPLE, 2);
   SetOptionLabel(20, DIAL_LABEL_ROTATED);
-  SetOptionMainValue(_T("%.0f"), DIAL_POSITION_INSIDE);
+  SetOptionMainValue(_T("%.2f"), DIAL_POSITION_INSIDE); //  ^ Precision
 }
 
-void DashboardInstrument_Compass::SetData(DASH_CAP st, double data,
-                                          wxString unit) {
+void DashboardInstrument_Compass::SetData(DASH_CAP st, double data, wxString unit) {
   double cdata = data;
   m_gpsWD = false;
   if (std::isnan(data)) m_gpsWD = true;
@@ -72,7 +68,7 @@ void DashboardInstrument_Compass::SetData(DASH_CAP st, double data,
 
 void DashboardInstrument_Compass::DrawBackground(wxGCDC* dc) {
   DrawBoat(dc, m_cx, m_cy, m_radius);
-  if (!m_gpsWD)  // Don't draw if no GPS
+//  if (!m_gpsWD)  // Don't draw if no GPS
     DrawCompassRose(dc, m_cx, m_cy, 0.7 * m_radius, m_AngleStart, true);
 }
 

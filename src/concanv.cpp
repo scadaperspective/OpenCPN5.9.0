@@ -273,10 +273,9 @@ void ConsoleCanvas::UpdateRouteData() {
 
       wxString cogstr;
       if (g_bShowTrue)
-        cogstr << wxString::Format(wxString("%6.0f", wxConvUTF8), dcog);
+        cogstr << wxString::Format(wxString("%6.2f", wxConvUTF8), dcog);
       if (g_bShowMag)
-        cogstr << wxString::Format(wxString("%6.0f(M)", wxConvUTF8),
-                                   gFrame->GetMag(dcog));
+        cogstr << wxString::Format(wxString("%6.2f(M)", wxConvUTF8), gFrame->GetMag(dcog));
 
       pBRG->SetAValue(cogstr);
 

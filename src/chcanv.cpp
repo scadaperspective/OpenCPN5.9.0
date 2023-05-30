@@ -3827,16 +3827,14 @@ void ChartCanvas::OnRolloverPopupTimerEvent(wxTimerEvent &event) {
             << segShow_point_b->GetName() << _T("\n");
 
           if (g_bShowTrue)
-            s << wxString::Format(wxString("%03d%c ", wxConvUTF8), (int)floor(brg+0.5),
+            s << wxString::Format(wxString("%03d.2%c ", wxConvUTF8), (int)floor(brg+0.5),
                                   0x00B0);
           if (g_bShowMag) {
-            double latAverage =
-                (segShow_point_b->m_lat + segShow_point_a->m_lat) / 2;
-            double lonAverage =
-                (segShow_point_b->m_lon + segShow_point_a->m_lon) / 2;
+            double latAverage = (segShow_point_b->m_lat + segShow_point_a->m_lat) / 2;
+            double lonAverage = (segShow_point_b->m_lon + segShow_point_a->m_lon) / 2;
             double varBrg = gFrame->GetMag(brg, latAverage, lonAverage);
 
-            s << wxString::Format(wxString("%03d%c ", wxConvUTF8), (int)floor(varBrg+0.5),
+            s << wxString::Format(wxString("%03d.2%c ", wxConvUTF8), (int)floor(varBrg+0.5),
                                   0x00B0);
           }
 
@@ -3973,18 +3971,13 @@ void ChartCanvas::OnRolloverPopupTimerEvent(wxTimerEvent &event) {
           m_pTrackRolloverWin = new RolloverWin(this, 10);
           m_pTrackRolloverWin->IsActive(false);
         }
-
         if (!m_pTrackRolloverWin->IsActive()) {
           wxString s;
-          TrackPoint *segShow_point_a =
-              (TrackPoint *)m_pRolloverTrackSeg->m_pData1;
-          TrackPoint *segShow_point_b =
-              (TrackPoint *)m_pRolloverTrackSeg->m_pData2;
+          TrackPoint *segShow_point_a = (TrackPoint *)m_pRolloverTrackSeg->m_pData1;
+          TrackPoint *segShow_point_b = (TrackPoint *)m_pRolloverTrackSeg->m_pData2;
 
           double brg, dist;
-          DistanceBearingMercator(
-              segShow_point_b->m_lat, segShow_point_b->m_lon,
-              segShow_point_a->m_lat, segShow_point_a->m_lon, &brg, &dist);
+          DistanceBearingMercator( segShow_point_b->m_lat, segShow_point_b->m_lon, segShow_point_a->m_lat, segShow_point_a->m_lon, &brg, &dist);
 
           if (!pt->m_bIsInLayer)
             s.Append(_("Track") + _T(": "));
@@ -3998,17 +3991,14 @@ void ChartCanvas::OnRolloverPopupTimerEvent(wxTimerEvent &event) {
           double tlenght = pt->Length();
           s << _T("\n") << _("Total Track: ")
             << FormatDistanceAdaptive(tlenght);
-          if (pt->GetLastPoint()->GetTimeString() &&
-              pt->GetPoint(0)->GetTimeString()) {
+          if (pt->GetLastPoint()->GetTimeString() && pt->GetPoint(0)->GetTimeString()) {
             wxDateTime lastPointTime = pt->GetLastPoint()->GetCreateTime();
             wxDateTime zeroPointTime = pt->GetPoint(0)->GetCreateTime();
             if (lastPointTime.IsValid() && zeroPointTime.IsValid()){
               wxTimeSpan ttime = lastPointTime - zeroPointTime;
               double htime = ttime.GetSeconds().ToDouble() / 3600.;
-              s << wxString::Format(_T("  %.1f "), (float)(tlenght / htime))
-                << getUsrSpeedUnit();
-              s << wxString(htime > 24. ? ttime.Format(_T("  %Dd %H:%M"))
-                                      : ttime.Format(_T("  %H:%M")));
+              s << wxString::Format(_T("  %.1f "), (float)(tlenght / htime)) << getUsrSpeedUnit();
+              s << wxString(htime > 24. ? ttime.Format(_T("  %Dd %H:%M")) : ttime.Format(_T("  %H:%M")));
             }
           }
 
@@ -4018,18 +4008,16 @@ void ChartCanvas::OnRolloverPopupTimerEvent(wxTimerEvent &event) {
 
           s << _T("\n");
           if (g_bShowTrue)
-            s << wxString::Format(wxString("%03d%c ", wxConvUTF8), (int)brg,
-                                  0x00B0);
+
+        s << wxString::Format(wxString("%03d.2%c ", wxConvUTF8), (double)brg , 0x00B0);
 
           if (g_bShowMag) {
-            double latAverage =
-                (segShow_point_b->m_lat + segShow_point_a->m_lat) / 2;
-            double lonAverage =
-                (segShow_point_b->m_lon + segShow_point_a->m_lon) / 2;
+            double latAverage = (segShow_point_b->m_lat + segShow_point_a->m_lat) / 2;
+            double lonAverage = (segShow_point_b->m_lon + segShow_point_a->m_lon) / 2;
             double varBrg = gFrame->GetMag(brg, latAverage, lonAverage);
 
-            s << wxString::Format(wxString("%03d%c ", wxConvUTF8), (int)varBrg,
-                                  0x00B0);
+            s << wxString::Format(wxString("%03d.2%c ", wxConvUTF8), (double)varBrg, 0x00B0);
+
           }
 
           s << FormatDistanceAdaptive(dist);
@@ -4039,12 +4027,8 @@ void ChartCanvas::OnRolloverPopupTimerEvent(wxTimerEvent &event) {
             wxDateTime apoint = segShow_point_a->GetCreateTime();
             wxDateTime bpoint = segShow_point_b->GetCreateTime();
             if (apoint.IsValid() && bpoint.IsValid()){
-              double segmentSpeed =
-                toUsrSpeed(dist / ((bpoint - apoint).GetSeconds()
-                                       .ToDouble() /
-                                   3600.));
-              s << wxString::Format(_T("  %.1f "), (float)segmentSpeed)
-                << getUsrSpeedUnit();
+              double segmentSpeed = toUsrSpeed(dist / ((bpoint - apoint).GetSeconds() .ToDouble() / 3600.));
+              s << wxString::Format(_T("  %3.2f "), (float)segmentSpeed) << getUsrSpeedUnit();
             }
           }
 
@@ -4156,9 +4140,9 @@ void ChartCanvas::SetCursorStatus(double cursor_lat, double cursor_lon) {
   wxString s;
   DistanceBearingMercator(cursor_lat, cursor_lon, gLat, gLon, &brg, &dist);
   if (g_bShowMag)
-    s.Printf("%03d%c(M)  ", (int)gFrame->GetMag(brg), 0x00B0);
+  s.Printf("%03.2f%c(M)  ", (float)gFrame->GetMag(brg), 0x00B0);
   else
-    s.Printf("%03d%c  ", (int)brg, 0x00B0);
+  s.Printf("%03.2f%c  ", (float)brg, 0x00B0);
 
   s << FormatDistanceAdaptive(dist);
 
@@ -4199,7 +4183,7 @@ void ChartCanvas::SetCursorStatus(double cursor_lat, double cursor_lon) {
     // In any case, display also an ETA with default speed at 6knts
 
     s << " [@";
-    s << wxString::Format(_T("%d"), (int)toUsrSpeed(boatSpeedDefault, -1));
+    s << wxString::Format(_T("%.2f"), (float)toUsrSpeed(boatSpeedDefault, -1));
     s << wxString::Format(_T("%s"), getUsrSpeedUnit(-1));
     s << " ";
     s << minutesToHoursDays(dist / boatSpeedDefault * 60);
@@ -10492,7 +10476,7 @@ void ChartCanvas::RenderRouteLegs(ocpnDC &dc) {
     wxPoint destPoint, lastPoint;
 
     route->m_NextLegGreatCircle = false;
-    int milesDiff = rhumbDist - gcDistm;
+    double milesDiff = rhumbDist - gcDistm;
     if (milesDiff > 1) {
       brg = gcBearing;
       dist = gcDistm;
@@ -10529,16 +10513,18 @@ void ChartCanvas::RenderRouteLegs(ocpnDC &dc) {
 
   wxString routeInfo;
   if (g_bShowTrue)
-    routeInfo << wxString::Format(wxString("%03d%c ", wxConvUTF8), (int)brg,
-                                  0x00B0);
+	  routeInfo << wxString::Format(wxString("%03.2f%c ", wxConvUTF8), (float)brg, 0x00B0);
+
+
+
 
   if (g_bShowMag) {
     double latAverage = (m_cursor_lat + render_lat) / 2;
     double lonAverage = (m_cursor_lon + render_lon) / 2;
     double varBrg = gFrame->GetMag(brg, latAverage, lonAverage);
 
-    routeInfo << wxString::Format(wxString("%03d%c ", wxConvUTF8), (int)varBrg,
-                                  0x00B0);
+    routeInfo << wxString::Format(wxString("%03.2f%c ", wxConvUTF8), (float)varBrg, 0x00B0);
+
   }
 
   routeInfo << _T(" ") << FormatDistanceAdaptive(dist);

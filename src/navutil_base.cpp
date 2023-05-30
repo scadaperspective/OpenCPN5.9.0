@@ -156,13 +156,13 @@ double toUsrSpeed(double kts_speed, int unit) {
       ret = kts_speed;
       break;
     case SPEED_MPH:  // mph
-      ret = kts_speed * 1.15078;
+      ret = kts_speed * 1.1507794480235;
       break;
     case SPEED_KMH:  // km/h
       ret = kts_speed * 1.852;
       break;
     case SPEED_MS:  // m/s
-      ret = kts_speed * 0.514444444;
+      ret = kts_speed * 0.51444444444444;
       break;
   }
   return ret;
@@ -179,7 +179,7 @@ double toUsrDistance(double nm_distance, int unit) {
       ret = nm_distance;
       break;
     case DISTANCE_MI:  // Statute miles
-      ret = nm_distance * 1.15078;
+      ret = nm_distance * 1.150779448;
       break;
     case DISTANCE_KM:
       ret = nm_distance * 1.852;
@@ -188,13 +188,13 @@ double toUsrDistance(double nm_distance, int unit) {
       ret = nm_distance * 1852;
       break;
     case DISTANCE_FT:
-      ret = nm_distance * 6076.12;
+      ret = nm_distance * 6076.1155;
       break;
     case DISTANCE_FA:
       ret = nm_distance * 1012.68591;
       break;
     case DISTANCE_IN:
-      ret = nm_distance * 72913.4;
+      ret = nm_distance * 72913.386;
       break;
     case DISTANCE_CM:
       ret = nm_distance * 185200;
@@ -274,11 +274,11 @@ wxString FormatDistanceAdaptive(double distance) {
   }
   wxString format;
   if (usrDistance < 5.0) {
-    format = _T("%1.2f ");
+    format = _T("%1.3f ");
   } else if (usrDistance < 100.0) {
-    format = _T("%2.1f ");
+    format = _T("%2.2f ");
   } else if (usrDistance < 1000.0) {
-    format = _T("%3.0f ");
+    format = _T("%3.1f ");
   } else {
     format = _T("%4.0f ");
   }
@@ -298,13 +298,13 @@ double fromUsrSpeed(double usr_speed, int unit, int default_val) {
       ret = usr_speed;
       break;
     case SPEED_MPH:  // mph
-      ret = usr_speed / 1.15078;
+      ret = usr_speed / 1.150779448;
       break;
     case SPEED_KMH:  // km/h
       ret = usr_speed / 1.852;
       break;
     case SPEED_MS:  // m/s
-      ret = usr_speed / 0.514444444;
+      ret = usr_speed / 0.51444444444444;
       break;
   }
   return ret;
@@ -321,7 +321,7 @@ double fromUsrDistance(double usr_distance, int unit, int default_val) {
       ret = usr_distance;
       break;
     case DISTANCE_MI:  // Statute miles
-      ret = usr_distance / 1.15078;
+      ret = usr_distance / 1.150779448;
       break;
     case DISTANCE_KM:
       ret = usr_distance / 1.852;
@@ -330,7 +330,7 @@ double fromUsrDistance(double usr_distance, int unit, int default_val) {
       ret = usr_distance / 1852;
       break;
     case DISTANCE_FT:
-      ret = usr_distance / 6076.12;
+      ret = usr_distance / 6076.1155;
       break;
   }
   return ret;

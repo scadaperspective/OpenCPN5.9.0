@@ -3278,7 +3278,7 @@ double fromUsrDistance(double usr_distance, int unit) {
       ret = usr_distance;
       break;
     case DISTANCE_MI:  // Statute miles
-      ret = usr_distance / 1.15078;
+      ret = usr_distance / 1.1507794480235;
       break;
     case DISTANCE_KM:
       ret = usr_distance / 1.852;
@@ -3287,7 +3287,7 @@ double fromUsrDistance(double usr_distance, int unit) {
       ret = usr_distance / 1852;
       break;
     case DISTANCE_FT:
-      ret = usr_distance / 6076.12;
+      ret = usr_distance / 6076.1155;
       break;
   }
   return ret;
@@ -3303,13 +3303,13 @@ double fromUsrSpeed(double usr_speed, int unit) {
       ret = usr_speed;
       break;
     case SPEED_MPH:  // mph
-      ret = usr_speed / 1.15078;
+      ret = usr_speed / 1.1507794480235;
       break;
     case SPEED_KMH:  // km/h
       ret = usr_speed / 1.852;
       break;
     case SPEED_MS:  // m/s
-      ret = usr_speed / 0.514444444;
+      ret = usr_speed / 0.51444444444444;
       break;
   }
   return ret;
@@ -3325,10 +3325,10 @@ double toUsrTemp(double cel_temp, int unit) {
       ret = cel_temp;
       break;
     case TEMPERATURE_F:  // Fahrenheit
-      ret = (cel_temp * 9.0 / 5.0) + 32;
+      ret = (cel_temp * 9.0 / 5.0) + 32.0;
       break;
     case TEMPERATURE_K:
-      ret = cel_temp + 273.15;
+      ret = cel_temp + 273.150;
       break;
   }
   return ret;
@@ -3377,12 +3377,12 @@ wxString getUsrTempUnit(int unit) {
 wxString formatAngle(double angle) {
   wxString out;
   if (g_bShowMag && g_bShowTrue) {
-    out.Printf(wxT("%03.0f %cT (%.0f %cM)"), angle, 0x00B0,
+    out.Printf(wxT("%03.3f %cT (%3.3f %cM)"), angle, 0x00B0,
                gFrame->GetMag(angle), 0x00B0);
   } else if (g_bShowTrue) {
-    out.Printf(wxT("%03.0f %cT"), angle, 0x00B0);
+    out.Printf(wxT("%03.3f %cT"), angle, 0x00B0);
   } else {
-    out.Printf(wxT("%03.0f %cM"), gFrame->GetMag(angle), 0x00B0);
+    out.Printf(wxT("%03.3f %cM"), gFrame->GetMag(angle), 0x00B0);
   }
   return out;
 }

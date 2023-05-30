@@ -5231,10 +5231,9 @@ void MyFrame::UpdateStatusBar() {
     // We show COG only if SOG is > 0.05
     if (!std::isnan(gCog) && !std::isnan(gSog) && (gSog > 0.05)) {
       if (g_bShowTrue)
-        cogs << wxString::Format(wxString("COG %03d%c  "), (int)gCog, 0x00B0);
+     cogs << wxString::Format(wxString("COG %3.2f%c  "), (float)gCog, 0x00B0);
       if (g_bShowMag)
-        cogs << wxString::Format(wxString("COG %03d%c(M)  "), (int)GetMag(gCog),
-                                 0x00B0);
+     cogs << wxString::Format(wxString("COG %3.2f%c(M)  "), (float)GetMag(gCog), 0x00B0);
     } else
       cogs.Printf(("COG ---%c"), 0x00B0);
 
@@ -8692,7 +8691,7 @@ void ParseAllENC(wxWindow *parent) {
     int scale = cte.GetScale();
 
     wxString msg;
-    msg.Printf(_("Distance from Ownship:  %4.0f NMi"), distance);
+    msg.Printf(_("Distance from Ownship:  %4.2f NMi"), distance);
 
     count++;
     if (wxThread::IsMain()) {

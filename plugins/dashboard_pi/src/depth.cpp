@@ -87,7 +87,7 @@ void DashboardInstrument_Depth::SetData(DASH_CAP st, double data,
     m_DepthUnit = unit;
   } else if (st == OCPN_DBP_STC_TMP) {
     if (!std::isnan(data)) {
-      m_Temp = wxString::Format(_T("%.1f"), data) + DEGREE_SIGN + unit;
+      m_Temp = wxString::Format(_T("%.2f"), data) + DEGREE_SIGN + unit;
     } else {
       m_Temp = "---";
     }
@@ -145,12 +145,12 @@ void DashboardInstrument_Depth::DrawBackground(wxGCDC* dc) {
   m_MaxDepth *= 1.2;
 
   wxString label;
-  label.Printf(_T("%.0f ") + m_DepthUnit, 0.0);
+  label.Printf(_T("%.2f ") + m_DepthUnit, 0.0);
   int width, height;
   dc->GetTextExtent(label, &width, &height, 0, 0, g_pFontSmall);
   dc->DrawText(label, size.x - width - 1, m_plotup - height);
 
-  label.Printf(_T("%.0f ") + m_DepthUnit, m_MaxDepth);
+  label.Printf(_T("%.2f ") + m_DepthUnit, m_MaxDepth);
   dc->GetTextExtent(label, &width, &height, 0, 0, g_pFontSmall);
   dc->DrawText(label, size.x - width - 1, m_plotdown);
 }

@@ -48,13 +48,13 @@ DashboardInstrument_RudderAngle::DashboardInstrument_RudderAngle(
   // Default Rudder position is centered
   m_MainValue = 0;
 
-  // SetOptionMainValue(_T("%3.0f Deg"), DIAL_POSITION_BOTTOMLEFT);
+  // SetOptionMainValue(_T("%3.2f Deg"), DIAL_POSITION_BOTTOMLEFT);
   SetOptionMarker(5, DIAL_MARKER_REDGREEN, 2);
   // Labels are set static because we've no logic to display them this way
   wxString labels[] = {_T("40"), _T("30"), _T("20"), _T("10"), _T("0"),
                        _T("10"), _T("20"), _T("30"), _T("40")};
   SetOptionLabel(10, DIAL_LABEL_HORIZONTAL, wxArrayString(9, labels));
-  //      SetOptionExtraValue(_T("%02.0f"), DIAL_POSITION_INSIDE);
+  //      SetOptionExtraValue(_T("%02.2f"), DIAL_POSITION_INSIDE);
 }
 
 wxSize DashboardInstrument_RudderAngle::GetSize(int orient, wxSize hint) {

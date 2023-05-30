@@ -180,23 +180,23 @@ void DashboardInstrument_BaroHistory::DrawWindSpeedScale(wxGCDC* dc) {
      The goal is to draw the legend with decimals only, if we really have them !
     */
     // top legend for max press
-    label1.Printf(_T("%.0f hPa"), m_MaxPressScale + (m_TotalMinPress - 18));
+    label1.Printf(_T("%.2f hPa"), m_MaxPressScale + (m_TotalMinPress - 18));
 
     // 3/4 legend
 
-    label2.Printf(_T("%.0f hPa"),
+    label2.Printf(_T("%.2f hPa"),
                   m_MaxPressScale * 3. / 4 + (m_TotalMinPress - 18));
 
     // center legend
 
-    label3.Printf(_T("%.0f hPa"), m_MaxPressScale / 2 + (m_TotalMinPress - 18));
+    label3.Printf(_T("%.2f hPa"), m_MaxPressScale / 2 + (m_TotalMinPress - 18));
 
     // 1/4 legend
 
-    label4.Printf(_T("%.0f hPa"), m_MaxPressScale / 4 + (m_TotalMinPress - 18));
+    label4.Printf(_T("%.2f hPa"), m_MaxPressScale / 4 + (m_TotalMinPress - 18));
 
     // bottom legend for min wind
-    label5.Printf(_T("%.0f hPa"), (m_TotalMinPress - 18));
+    label5.Printf(_T("%.2f hPa"), (m_TotalMinPress - 18));
   }
   dc->GetTextExtent(label1, &m_LeftLegend, &height, 0, 0, g_pFontSmall);
   dc->DrawText(label1, 4, (int)(m_TopLineHeight - height / 2));
@@ -284,7 +284,7 @@ void DashboardInstrument_BaroHistory::DrawForeground(wxGCDC* dc) {
   dc->SetFont(*g_pFontData);
   dc->SetTextForeground(col);
   if (!std::isnan(m_Press))
-    WindSpeed = wxString::Format(_T("hPa %3.1f  "), m_Press);
+    WindSpeed = wxString::Format(_T("hPa %3.2f  "), m_Press);
   else
     WindSpeed = wxString::Format(_T("hPa ---  "));
   dc->GetTextExtent(WindSpeed, &degw, &degh, 0, 0, g_pFontData);
@@ -309,7 +309,7 @@ void DashboardInstrument_BaroHistory::DrawForeground(wxGCDC* dc) {
   m_ratioW = double(m_DrawAreaRect.width) / (BARO_RECORD_COUNT - 1);
 
   dc->DrawText(wxString::Format(
-                   _(" Max %.1f since %02d:%02d  Overall Max %.1f Min %.1f "),
+                   _(" Max %.2f since %02d:%02d  Overall Max %.2f Min %.2f "),
                    m_MaxPress, hour, min, m_TotalMaxPress, m_TotalMinPress),
                    m_LeftLegend + 2 + degw, m_TopLineHeight - 1 - labelh);
   pen.SetStyle(wxPENSTYLE_SOLID);

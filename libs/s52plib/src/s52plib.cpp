@@ -2,8 +2,8 @@
  *
  * Project:  OpenCPN
  * Purpose:  S52 Presentation Library
- * Authors:   David Register
- *            Jesper Weissglas
+ * Authors:  David Register
+ *           Jesper Weissglas
  *
  ***************************************************************************
  *   Copyright (C) 2010 by David S. Register                               *

@@ -338,9 +338,9 @@ wxString toSDMM(int NEflag, double a, bool hi_precision) {
       break;
     case 1:
       if (hi_precision)
-        s.Printf(_T ( "%3.6f %c" ), ang, c);
+        s.Printf(_T ( "%3.6f\u00B0 %c" ), ang, c);
       else
-        s.Printf(_T ( "%3.4f %c" ), ang, c);
+        s.Printf(_T ( "%3.4f\u00B0 %c" ), ang, c);
       break;
     case 2:
       m = (long)((a - (double)d) * 60);

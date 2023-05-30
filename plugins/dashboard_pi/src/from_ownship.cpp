@@ -78,7 +78,7 @@ void DashboardInstrument_FromOwnship::SetData(DASH_CAP st, double data,
   if (s_lat < 99999999 && s_lon < 99999999) {
     double brg, dist;
     DistanceBearingMercator_Plugin(c_lat, c_lon, s_lat, s_lon, &brg, &dist);
-    m_data1.Printf(_T("%3.3f ") + DEGREE_SIGN, (double)brg);
+    m_data1.Printf(_T("%3.3f") + DEGREE_SIGN, (double)brg);
     m_data2.Printf(_T("%3.3f %s"),
                    toUsrDistance_Plugin(dist, g_iDashDistanceUnit),
                    getUsrDistanceUnit_Plugin(g_iDashDistanceUnit).c_str());
@@ -91,7 +91,7 @@ wxSize DashboardInstrument_FromOwnship::GetSize(int orient, wxSize hint) {
   wxClientDC dc(this);
   int w;
   dc.GetTextExtent(m_title, &w, &m_TitleHeight, 0, 0, g_pFontTitle);
-  dc.GetTextExtent(_T("000.000 NMi"), &w, &m_DataHeight, 0, 0, g_pFontData);
+  dc.GetTextExtent(_T("0000.000 NMi"), &w, &m_DataHeight, 0, 0, g_pFontData);
 
   if (orient == wxHORIZONTAL) {
     return wxSize(w + 10, wxMax(hint.y, m_TitleHeight + m_DataHeight * 2));

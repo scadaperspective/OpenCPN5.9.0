@@ -151,8 +151,8 @@ ConsoleCanvas::~ConsoleCanvas() { delete pCDI; }
 
 void ConsoleCanvas::SetColorScheme(ColorScheme cs) {
   pbackBrush = wxTheBrushList->FindOrCreateBrush(
-      GetGlobalColor(_T("DILG1" /*UIBDR*/)), wxBRUSHSTYLE_SOLID);
-  SetBackgroundColour(GetGlobalColor(_T("DILG1" /*"UIBDR"*/)));
+      GetGlobalColor(_T("DASHL" /*UIBDR*/)), wxBRUSHSTYLE_SOLID); // DILG1
+  SetBackgroundColour(GetGlobalColor(_T("DASHL" /*"UIBDR"*/)));
 
   if (g_bShowRouteTotal)
     pThisLegText->SetLabel(_("Route"));
@@ -161,7 +161,7 @@ void ConsoleCanvas::SetColorScheme(ColorScheme cs) {
 
   //  Also apply color scheme to all known children
 
-  pThisLegText->SetBackgroundColour(GetGlobalColor(_T("DILG1" /*"UIBDR"*/)));
+  pThisLegText->SetBackgroundColour(GetGlobalColor(_T("DASHL" /*"UIBDR"*/)));
 
   pXTE->SetColorScheme(cs);
   pBRG->SetColorScheme(cs);
@@ -673,11 +673,11 @@ void CDI::MouseEvent(wxMouseEvent& event) {
 }
 
 void CDI::SetColorScheme(ColorScheme cs) {
-  m_pbackBrush = wxTheBrushList->FindOrCreateBrush(GetGlobalColor(_T("DILG2")),
+  m_pbackBrush = wxTheBrushList->FindOrCreateBrush(GetGlobalColor(_T("DASHL")), //DILG2
                                                    wxBRUSHSTYLE_SOLID);
-  m_proadBrush = wxTheBrushList->FindOrCreateBrush(GetGlobalColor(_T("DILG1")),
+  m_proadBrush = wxTheBrushList->FindOrCreateBrush(GetGlobalColor(_T("DASHL")), //DILG1
                                                    wxBRUSHSTYLE_SOLID);
-  m_proadPen = wxThePenList->FindOrCreatePen(GetGlobalColor(_T("CHBLK")), 1,
+  m_proadPen = wxThePenList->FindOrCreatePen(GetGlobalColor(_T("DASHL")), 1, //CHBLK
                                              wxPENSTYLE_SOLID);
 }
 

@@ -1,9 +1,9 @@
 /******************************************************************************
- *
+ * $Id: about.cpp
  * Project:  OpenCPN
  * Purpose:  About Dialog
  * Author:   David Register
- *
+ * Mods:     RGS
  ***************************************************************************
  *   Copyright (C) 2010-2023 by David S. Register                          *
  *                                                                         *
@@ -100,7 +100,9 @@ const wxString AuthorText =
     wxT("      OpenGL Architecture\n\n")
     wxT("    J.P. Joubert\n")
     wxT("      GRIB PlugIn enhancements\n\n")
-    wxT("    Thomas Höckne\n")
+	wxT("    Ron Southworth\n")
+	wxT("      Instrumentation Precision Mods\n\n")
+	wxT("    Thomas Höckne\n")
     wxT("      Documentation and Wiki support\n\n")
     wxT("    Didier Gautheron\n")
     wxT("      App debugging and optimization\n\n")

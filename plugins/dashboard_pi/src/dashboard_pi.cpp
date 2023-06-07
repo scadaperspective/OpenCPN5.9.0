@@ -3588,7 +3588,8 @@ DashboardPreferencesDialog::DashboardPreferencesDialog(
 
   dparent = scrollWin;
 
-
+  wxBoxSizer *itemBoxSizer2 = new wxBoxSizer(wxVERTICAL);
+  scrollWin->SetSizer(itemBoxSizer2);
 #else
   wxBoxSizer *itemBoxSizer2 = new wxBoxSizer(wxVERTICAL);
   itemBoxSizerMainPanel->Add(itemBoxSizer2, 1, wxEXPAND);
@@ -3598,8 +3599,6 @@ DashboardPreferencesDialog::DashboardPreferencesDialog(
   CreateStdDialogButtonSizer(wxOK | wxCANCEL);
   itemBoxSizerMainPanel->Add(DialogButtonSizer, 0, wxALIGN_RIGHT | wxALL, 5);
 
-  wxBoxSizer *itemBoxSizer2 = new wxBoxSizer(wxVERTICAL);
-  scrollWin->SetSizer(itemBoxSizer2);
 
   wxNotebook *itemNotebook = new wxNotebook(dparent, wxID_ANY, wxDefaultPosition,
                                             wxDefaultSize, wxNB_TOP);

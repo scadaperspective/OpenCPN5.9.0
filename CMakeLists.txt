@@ -184,7 +184,7 @@ option(OCPN_USE_GARMINHOST "Enable Garmin Host Mode support" ON)
 if (QT_ANDROID OR ${CMAKE_VERSION} VERSION_LESS 3.14)
   set(OCPN_BUILD_TEST OFF)
 else ()
-  option(OCPN_BUILD_TEST "Enable test subproject build" ON)
+  option(OCPN_BUILD_TEST "Enable test subproject build" OFF) # RGS Turned OFF
 endif ()
 
 execute_process(

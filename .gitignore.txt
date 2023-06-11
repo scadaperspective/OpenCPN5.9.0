@@ -14,4 +14,4 @@ buildwin/crashrpt/CrashSender1402.exe
 .project
 .cproject
 .editorconfig
-.settings/*
+./settings

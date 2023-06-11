@@ -1577,7 +1577,9 @@ bool MarkInfoDlg::UpdateProperties(bool positionOnly) {
       m_EtaDatePickerCtrl->Enable(false);
       m_EtaTimePickerCtrl->Enable(false);
       m_cbEtaPresent->Enable(false);
-        m_notebookProperties->SetSelection(0);  // Show Basic page
+//      if (!m_textDescription->IsEmpty()) {
+        m_notebookProperties->SetSelection(0);  // Show Basic instead of Description page ?
+//      }
       m_comboBoxTideStation->Enable(false);
     } else {
       m_staticTextLayer->Enable(false);

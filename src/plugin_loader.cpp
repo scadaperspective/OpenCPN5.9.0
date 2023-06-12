@@ -86,7 +86,7 @@ const char* const LINUX_LOAD_PATH = "~/.local/lib:/usr/local/lib:/usr/lib";
 const char* const FLATPAK_LOAD_PATH = "~/.var/app/org.opencpn.OpenCPN/lib";
 
 static const std::vector<std::string> SYSTEM_PLUGINS = {
-    "chartdownloader", "wmm", "dashboard", "grib"};
+    "chartdownloader", "wmm", "dashboard", "grib", "tactics", "logbook" };
 //          Helper and interface classes
 
 PlugInContainer::PlugInContainer() {
@@ -102,7 +102,7 @@ PlugInContainer::PlugInContainer() {
 /** Return true if path "seems" to contain a system plugin */
 static bool IsSystemPlugin(const std::string& path) {
   static const std::vector<std::string> SysPlugins = {
-    "chartdldr_pi", "wmm_pi", "dashboard_pi", "grib_pi" };
+    "chartdldr_pi", "wmm_pi", "dashboard_pi", "grib_pi", "tactics_pi", "LogbookKonni_pi" };
 
   const std::string lc_path = ocpn::tolower(path);
   for (const auto& p : SysPlugins) {
@@ -342,10 +342,10 @@ bool PluginLoader::LoadPluginCandidate(wxString file_name, bool load_enabled) {
     auto msg =
         std::string("Incompatible plugin detected: ") + file_name.ToStdString();
     wxLogMessage(msg.c_str());
-    if (m_blacklist->mark_unloadable(file_name.ToStdString())) {
-      LoadError le(LoadError::Type::Unloadable, file_name.ToStdString());
-      load_errors.push_back(le);
-    }
+//    if (m_blacklist->mark_unloadable(file_name.ToStdString())) {
+//      LoadError le(LoadError::Type::Unloadable, file_name.ToStdString());
+//      load_errors.push_back(le);
+//    }
     return false;
   }
 

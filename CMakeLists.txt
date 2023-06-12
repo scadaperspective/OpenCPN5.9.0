@@ -130,14 +130,14 @@ bundle_gshhs_opt("ON")
 bundle_tcdata_opt("ON")
 
 if (APPLE OR WIN32)
-  bundle_docs_opt("OFF")
+  bundle_docs_opt("ON")
 else (APPLE OR WIN32)
   bundle_docs_opt("OFF")
 endif (APPLE OR WIN32)
 
 
 option(OCPN_VERBOSE "Make verbose builds"  ON)
-option(OCPN_PEDANTIC "Enable more compiler warnings" ON)
+option(OCPN_PEDANTIC "Enable more compiler warnings" OFF)
 
 set(OCPN_PACKAGE_RELEASE "1" CACHE STRING "Package release number")
 
@@ -184,7 +184,7 @@ option(OCPN_USE_GARMINHOST "Enable Garmin Host Mode support" ON)
 if (QT_ANDROID OR ${CMAKE_VERSION} VERSION_LESS 3.14)
   set(OCPN_BUILD_TEST OFF)
 else ()
-  option(OCPN_BUILD_TEST "Enable test subproject build" OFF) # RGS Turned OFF
+  option(OCPN_BUILD_TEST "Enable test subproject build" ON) 
 endif ()
 
 execute_process(

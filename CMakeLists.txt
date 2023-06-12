@@ -130,14 +130,14 @@ bundle_gshhs_opt("ON")
 bundle_tcdata_opt("ON")
 
 if (APPLE OR WIN32)
-  bundle_docs_opt("ON")
+  bundle_docs_opt("OFF")
 else (APPLE OR WIN32)
   bundle_docs_opt("OFF")
 endif (APPLE OR WIN32)
 
 
 option(OCPN_VERBOSE "Make verbose builds"  ON)
-option(OCPN_PEDANTIC "Enable more compiler warnings" OFF)
+option(OCPN_PEDANTIC "Enable more compiler warnings" ON)
 
 set(OCPN_PACKAGE_RELEASE "1" CACHE STRING "Package release number")
 

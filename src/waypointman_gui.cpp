@@ -636,5 +636,3 @@ void WayPointmanGui::ReloadRoutepointIcons() {
     node = node->GetNext();
   }
 }
-
-

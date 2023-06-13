@@ -117,7 +117,7 @@ ConsoleCanvas::ConsoleCanvas(wxWindow* frame) {
   m_pitemBoxSizerLeg->Add(pBRG, 1, wxALIGN_LEFT | wxALL, 2);
 
   pVMG = new AnnunText(this, -1, _("Console Legend"), _("Console Value"));
-  pVMG->SetALabel(_T("VMG"));
+  pVMG->SetALabel(_T("VMC"));
   m_pitemBoxSizerLeg->Add(pVMG, 1, wxALIGN_LEFT | wxALL, 2);
 
   pRNG = new AnnunText(this, -1, _("Console Legend"), _("Console Value"));
@@ -125,7 +125,7 @@ ConsoleCanvas::ConsoleCanvas(wxWindow* frame) {
   m_pitemBoxSizerLeg->Add(pRNG, 1, wxALIGN_LEFT | wxALL, 2);
 
   pTTG = new AnnunText(this, -1, _("Console Legend"), _("Console Value"));
-  pTTG->SetALabel(_T("TTG  @VMG"));
+  pTTG->SetALabel(_T("TTG  @VMC"));
   m_pitemBoxSizerLeg->Add(pTTG, 1, wxALIGN_LEFT | wxALL, 2);
 
   //    Create CDI Display Window
@@ -269,13 +269,13 @@ void ConsoleCanvas::UpdateRouteData() {
 
       // Brg to the next waypoint
       float dcog = g_pRouteMan->GetCurrentBrgToActivePoint();
-      if (dcog >= 359.5) dcog = 0;
+      if (dcog >= 359.99) dcog = 0;
 
       wxString cogstr;
       if (g_bShowTrue)
-        cogstr << wxString::Format(wxString("%6.2f", wxConvUTF8), dcog);
+        cogstr << wxString::Format(wxString("%3.2f ", wxConvUTF8), dcog);
       if (g_bShowMag)
-        cogstr << wxString::Format(wxString("%6.2f(M)", wxConvUTF8), gFrame->GetMag(dcog));
+        cogstr << wxString::Format(wxString("%3.2f(M)", wxConvUTF8), gFrame->GetMag(dcog));
 
       pBRG->SetAValue(cogstr);
 
@@ -284,7 +284,7 @@ void ConsoleCanvas::UpdateRouteData() {
         double BRG;
         BRG = g_pRouteMan->GetCurrentBrgToActivePoint();
         double vmg = gSog * cos((BRG - gCog) * PI / 180.);
-        str_buf.Printf(_T("%6.2f"), toUsrSpeed(vmg));
+        str_buf.Printf(_T("%3.2f"), toUsrSpeed(vmg));
 
         if (m_speedUsed == SPEED_VMG) {
           // VMG
@@ -328,9 +328,9 @@ void ConsoleCanvas::UpdateRouteData() {
             toUsrDistance(g_pRouteMan->GetCurrentXTEToActivePoint()));
         pXTE->SetAValue(str_buf);
         if (g_pRouteMan->GetXTEDir() < 0)
-          pXTE->SetALabel(wxString(_("XTE         L")));
+          pXTE->SetALabel(wxString(_("XTE       L ")));
         else
-          pXTE->SetALabel(wxString(_("XTE         R")));
+          pXTE->SetALabel(wxString(_("XTE       R ")));
         // TTG
         // In all cases, ttg/eta are declared invalid if VMG <= 0.
         // If showing only "this leg", use VMG for calculation of ttg
@@ -344,7 +344,7 @@ void ConsoleCanvas::UpdateRouteData() {
 
         pTTG->SetAValue(ttg_s);
         if (m_speedUsed == SPEED_VMG) {
-          pTTG->SetALabel(wxString(_("TTG  @VMG")));
+          pTTG->SetALabel(wxString(_("TTG  @VMC")));
         } else {
           pTTG->SetALabel(wxString(_("TTG  @SOG")));
         }
@@ -409,8 +409,8 @@ void ConsoleCanvas::UpdateRouteData() {
         }
         pXTE->SetAValue(seta);
         if (m_speedUsed == SPEED_VMG) {
-          pTTG->SetALabel(wxString(_("TTG  @VMG")));
-          pXTE->SetALabel(wxString(_("ETA  @VMG")));
+          pTTG->SetALabel(wxString(_("TTG  @VMC")));
+          pXTE->SetALabel(wxString(_("ETA  @VMC")));
         } else {
           pTTG->SetALabel(wxString(_("TTG  @SOG")));
           pXTE->SetALabel(wxString(_("ETA  @SOG")));

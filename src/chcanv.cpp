@@ -4139,10 +4139,16 @@ void ChartCanvas::SetCursorStatus(double cursor_lat, double cursor_lon) {
   double brg, dist;
   wxString s;
   DistanceBearingMercator(cursor_lat, cursor_lon, gLat, gLon, &brg, &dist);
+  if (g_bShowTrue)
+   s.Printf("%3.2f%cT ", (float)brg, 0x00B0);
+ else
   if (g_bShowMag)
-  s.Printf("%03.2f%c(M)  ", (float)gFrame->GetMag(brg), 0x00B0);
-  else
-  s.Printf("%03.2f%c  ", (float)brg, 0x00B0);
+  s.Printf("%3.2f%cM ", (float)gFrame->GetMag(brg), 0x00B0);
+
+
+
+//  else
+//  s.Printf("%03.2f%c ", (float)brg, 0x00B0);
 
   s << FormatDistanceAdaptive(dist);
 
@@ -10514,9 +10520,6 @@ void ChartCanvas::RenderRouteLegs(ocpnDC &dc) {
   wxString routeInfo;
   if (g_bShowTrue)
 	  routeInfo << wxString::Format(wxString("%03.2f%c ", wxConvUTF8), (float)brg, 0x00B0);
-
-
-
 
   if (g_bShowMag) {
     double latAverage = (m_cursor_lat + render_lat) / 2;

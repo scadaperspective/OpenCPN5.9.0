@@ -273,9 +273,10 @@ void ConsoleCanvas::UpdateRouteData() {
 
       wxString cogstr;
       if (g_bShowTrue)
-        cogstr << wxString::Format(wxString("%3.2f ", wxConvUTF8), dcog);
+        cogstr << wxString::Format(wxString("%3.2fT ", wxConvUTF8), dcog);
+     else
       if (g_bShowMag)
-        cogstr << wxString::Format(wxString("%3.2f(M)", wxConvUTF8), gFrame->GetMag(dcog));
+        cogstr << wxString::Format(wxString("%3.2fM ", wxConvUTF8), gFrame->GetMag(dcog));
 
       pBRG->SetAValue(cogstr);
 
@@ -328,9 +329,9 @@ void ConsoleCanvas::UpdateRouteData() {
             toUsrDistance(g_pRouteMan->GetCurrentXTEToActivePoint()));
         pXTE->SetAValue(str_buf);
         if (g_pRouteMan->GetXTEDir() < 0)
-          pXTE->SetALabel(wxString(_("XTE       L ")));
+          pXTE->SetALabel(wxString(_("XTE              L ")));
         else
-          pXTE->SetALabel(wxString(_("XTE       R ")));
+          pXTE->SetALabel(wxString(_("XTE              R ")));
         // TTG
         // In all cases, ttg/eta are declared invalid if VMG <= 0.
         // If showing only "this leg", use VMG for calculation of ttg
@@ -344,9 +345,9 @@ void ConsoleCanvas::UpdateRouteData() {
 
         pTTG->SetAValue(ttg_s);
         if (m_speedUsed == SPEED_VMG) {
-          pTTG->SetALabel(wxString(_("TTG  @VMC")));
+          pTTG->SetALabel(wxString(_("TTG     @VMC")));
         } else {
-          pTTG->SetALabel(wxString(_("TTG  @SOG")));
+          pTTG->SetALabel(wxString(_("TTG     @SOG")));
         }
       } else {
         //    Remainder of route

@@ -329,9 +329,9 @@ void ConsoleCanvas::UpdateRouteData() {
             toUsrDistance(g_pRouteMan->GetCurrentXTEToActivePoint()));
         pXTE->SetAValue(str_buf);
         if (g_pRouteMan->GetXTEDir() < 0)
-          pXTE->SetALabel(wxString(_("XTE              L ")));
+          pXTE->SetALabel(wxString(_("XTE  < L")));
         else
-          pXTE->SetALabel(wxString(_("XTE              R ")));
+          pXTE->SetALabel(wxString(_("XTE  > R")));
         // TTG
         // In all cases, ttg/eta are declared invalid if VMG <= 0.
         // If showing only "this leg", use VMG for calculation of ttg
@@ -345,9 +345,9 @@ void ConsoleCanvas::UpdateRouteData() {
 
         pTTG->SetAValue(ttg_s);
         if (m_speedUsed == SPEED_VMG) {
-          pTTG->SetALabel(wxString(_("TTG     @VMC")));
+          pTTG->SetALabel(wxString(_("TTG  @VMC")));
         } else {
-          pTTG->SetALabel(wxString(_("TTG     @SOG")));
+          pTTG->SetALabel(wxString(_("TTG  @SOG")));
         }
       } else {
         //    Remainder of route

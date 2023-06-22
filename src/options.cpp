@@ -48,8 +48,6 @@
 #include <wx/choice.h>
 #include <wx/dirdlg.h>
 #include <wx/clrpicker.h>
-#include <wx/fontdata.h>
-#include <wx/fontdlg.h>
 #include <wx/stdpaths.h>
 #include <wx/tokenzr.h>
 #include <wx/mediactrl.h>
@@ -58,6 +56,10 @@
 #include <wx/statline.h>
 #include <wx/regex.h>
 #include <wx/textwrapper.h>
+
+
+#include <wx/fontdata.h>
+#include <wx/fontdlg.h>
 
 #include "comm_drv_factory.h"
 #include "comm_util.h"
@@ -70,6 +72,10 @@
 #if defined(__WXGTK__) || defined(__WXQT__)
 #include <wx/colordlg.h>
 #endif
+
+
+
+
 
 #include "config.h"
 #include "config_vars.h"
@@ -92,14 +98,14 @@ extern GLuint g_raster_format;
 #include "SoundFactory.h"
 #include "SystemCmdSound.h"
 
-#include "SystemCmdSound.h"
+//#include "SystemCmdSound.h"
+
 
 #include "wx28compat.h"
 #include "routeman.h"
 #include "chcanv.h"
 #include "chart_ctx_factory.h"
 #include "MarkInfo.h"
-
 #include "ais.h"
 #include "ais_decoder.h"
 #include "ais_target_data.h"

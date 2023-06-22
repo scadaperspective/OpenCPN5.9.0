@@ -272,10 +272,6 @@ wxString getInstrumentCaption(unsigned int id) {
       return _("App. Wind Speed");
     case ID_DBP_D_TW:
       return _("True Wind Angle & Speed");
-    case ID_DBP_I_ALTI:
-      return _("Altitude");
-    case ID_DBP_D_ALTI:
-      return _("Altitude Trace");
     case ID_DBP_I_DPT:
       return _("Depth");
     case ID_DBP_D_DPT:
@@ -338,6 +334,10 @@ wxString getInstrumentCaption(unsigned int id) {
       return _("Local CPU Clock");
     case ID_DBP_I_SUNLCL:
       return _("Local Sunrise/Sunset");
+          case ID_DBP_I_ALTI:
+      return _("Altitude");
+    case ID_DBP_D_ALTI:
+      return _("Altitude Trace");
   }
   return _T("");
 }
@@ -5079,7 +5079,7 @@ void DashboardWindow::SetInstrumentList(wxArrayInt list) {
       case ID_DBP_I_ALTI:
         instrument = new DashboardInstrument_Single(
             this, wxID_ANY, getInstrumentCaption(id), OCPN_DBP_STC_ALTI,
-            _T("%6.1f"));
+            _T("%6.2f"));
         break;
       case ID_DBP_D_ALTI:
         instrument = new DashboardInstrument_Altitude(this, wxID_ANY,

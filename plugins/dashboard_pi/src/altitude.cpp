@@ -228,7 +228,7 @@ void DashboardInstrument_Altitude::DrawBackground(wxGCDC* dc) {
   dc->GetTextExtent(label, &width, &height, 0, 0, g_pFontSmall);
   dc->DrawText(label, size.x - width - 1, a_plotup - height);
 
-  label.Printf(_T("%.1f/ %8.0f ") + m_AltitudeUnit, m_Range/c_GridLines, m_MinAltitude);
+  label.Printf(_T("%.2f/ %8.2f ") + m_AltitudeUnit, m_Range/c_GridLines, m_MinAltitude);
   dc->GetTextExtent(label, &width, &height, 0, 0, g_pFontSmall);
   dc->DrawText(label, size.x - width - 1, a_plotdown);
 }

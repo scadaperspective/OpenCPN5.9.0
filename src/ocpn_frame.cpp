@@ -5231,11 +5231,11 @@ void MyFrame::UpdateStatusBar() {
     // We show COG only if SOG is > 0.05
     if (!std::isnan(gCog) && !std::isnan(gSog) && (gSog > 0.05)) {
       if (g_bShowTrue)
-     cogs << wxString::Format(wxString("COG %3.2f%c T"), (float)gCog, 0x00B0);
+     cogs << wxString::Format(wxString(" COG %3.2f%c T"), (float)gCog, 0x00B0);
       if (g_bShowMag)
-     cogs << wxString::Format(wxString("COG %3.2f%c M"), (float)GetMag(gCog), 0x00B0);
+     cogs << wxString::Format(wxString(" COG %3.2f%c M"), (float)GetMag(gCog), 0x00B0);
     } else
-      cogs.Printf(("COG ---%c"), 0x00B0);
+      cogs.Printf((" COG ---%c"), 0x00B0);
 
     sogcog.Append(cogs);
     SetStatusText(sogcog, STAT_FIELD_SOGCOG);

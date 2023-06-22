@@ -62,10 +62,10 @@ DashboardInstrument_Dial::DashboardInstrument_Dial(
 
   m_MainValue = s_value;
   m_ExtraValue = 0;
-  m_MainValueFormat = _T("%d");
+  m_MainValueFormat = _T("%f");
   m_MainValueUnit = _T("");
   m_MainValueOption = DIAL_POSITION_NONE;
-  m_ExtraValueFormat = _T("%d");
+  m_ExtraValueFormat = _T("%f");
   m_ExtraValueUnit = _T("");
   m_ExtraValueOption = DIAL_POSITION_NONE;
   m_MarkerOption = DIAL_MARKER_SIMPLE;
@@ -311,10 +311,10 @@ void DashboardInstrument_Dial::DrawData(wxGCDC* dc, double value, wxString unit,
     if (unit == _T("\u00B0"))
       text = wxString::Format(format, value) + DEGREE_SIGN;
     else if (unit == _T("\u00B0L"))  // No special display for now, might be
-                                     // XX°< (as in text-only instrument)
+                                     // XXï¿½< (as in text-only instrument)
       text = wxString::Format(format, value) + DEGREE_SIGN;
     else if (unit ==
-             _T("\u00B0R"))  // No special display for now, might be >XX°
+             _T("\u00B0R"))  // No special display for now, might be >XXï¿½
       text = wxString::Format(format, value) + DEGREE_SIGN;
     else if (unit == _T("\u00B0T"))
       text = wxString::Format(format, value) + DEGREE_SIGN + _T("T");
@@ -413,7 +413,7 @@ void DashboardInstrument_Dial::DrawForeground(wxGCDC* dc) {
   brush.SetColour(cl);
   dc->SetBrush(brush);
 
-  /* this is fix for a +/-180° round instrument, when m_MainValue is supplied as
+  /* this is fix for a +/-180ï¿½ round instrument, when m_MainValue is supplied as
    * <0..180><L | R> for example TWA & AWA */
   double data;
   if (m_MainValueUnit == _T("\u00B0L"))

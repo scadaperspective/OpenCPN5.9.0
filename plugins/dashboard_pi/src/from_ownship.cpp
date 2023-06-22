@@ -4,7 +4,7 @@
  * Project:  OpenCPN
  * Purpose:  Dashboard Plugin
  * Author:   Pavel Kalian
- *
+ *   Mods:   Ron Southworth
  ***************************************************************************
  *   Copyright (C) 2010 by David S. Register                               *
  *                                                                         *

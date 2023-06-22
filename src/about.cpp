@@ -3,7 +3,7 @@
  * Project:  OpenCPN
  * Purpose:  About Dialog
  * Author:   David Register
- * Mods:     RGS
+ *   Mods:   RGS
  ***************************************************************************
  *   Copyright (C) 2010-2023 by David S. Register                          *
  *                                                                         *
@@ -59,6 +59,7 @@ extern about* g_pAboutDlgLegacy;
 extern bool g_bresponsive;
 
 wxString OpenCPNVersion("\n      Version ");
+
 
 #define xID_OK 10009
 

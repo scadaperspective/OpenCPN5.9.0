@@ -4140,13 +4140,10 @@ void ChartCanvas::SetCursorStatus(double cursor_lat, double cursor_lon) {
   wxString s;
   DistanceBearingMercator(cursor_lat, cursor_lon, gLat, gLon, &brg, &dist);
   if (g_bShowTrue)
-   s.Printf("%3.2f%cT ", (float)brg, 0x00B0);
+   s.Printf("%3.2f%c T ", (float)brg, 0x00B0);
  else
   if (g_bShowMag)
-  s.Printf("%3.2f%cM ", (float)gFrame->GetMag(brg), 0x00B0);
-
-
-
+  s.Printf("%3.2f%c M ", (float)gFrame->GetMag(brg), 0x00B0);
 //  else
 //  s.Printf("%03.2f%c ", (float)brg, 0x00B0);
 

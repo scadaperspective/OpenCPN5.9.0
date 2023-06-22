@@ -216,7 +216,7 @@ void DashboardInstrument_Depth::DrawForeground(wxGCDC* dc) {
   dc->SetFont(*g_pFontData);
   if (m_DepthUnit != _T("-")) {  // Watchdog
     wxString s_depth = wxString::Format(_T("%.2f"), m_Depth);
-    // We want only one decimal but for security not rounded up.
+    //  for security not rounded up.
     s_depth = s_depth.Mid(0, s_depth.length() - 1);
     dc->DrawText(s_depth + _T(" ") + m_DepthUnit, 10, m_TitleHeight);
   } else

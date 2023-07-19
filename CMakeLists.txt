@@ -184,7 +184,7 @@ option(OCPN_USE_GARMINHOST "Enable Garmin Host Mode support" ON)
 if (QT_ANDROID OR ${CMAKE_VERSION} VERSION_LESS 3.14)
   set(OCPN_BUILD_TEST OFF)
 else ()
-  option(OCPN_BUILD_TEST "Enable test subproject build" ON) 
+  option(OCPN_BUILD_TEST "Enable test subproject build" ON)
 endif ()
 
 execute_process(
@@ -490,8 +490,8 @@ if (QT_ANDROID)
   add_definitions(-D__OCPN__ANDROID__)
   add_definitions(-DANDROID)
   add_definitions(-DNOASSERT)
-  set(CMAKE_CXX_FLAGS "-pthread -fPIC")
-  set(CMAKE_C_FLAGS "-pthread -fPIC")
+  set(CMAKE_CXX_FLAGS "-pthread -fPIC -g")
+  set(CMAKE_C_FLAGS "-pthread -fPIC -g")
 
   add_compile_options("-Wno-inconsistent-missing-override"
         "-Wno-potentially-evaluated-expression"
@@ -503,7 +503,7 @@ if (QT_ANDROID)
     add_compile_options("-O0")
   endif ()
 
-  set(CMAKE_SHARED_LINKER_FLAGS "-Wl,-soname,libgorp.so ")
+  set(CMAKE_SHARED_LINKER_FLAGS "-Wl,-soname,libgorp.so -Wl,--build-id")
 endif (QT_ANDROID)
 
 
